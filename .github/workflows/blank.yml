@@ -28,13 +28,17 @@ jobs:
       # Read Variable from dev.json
       - name: Run a one-line script
         run: echo Hello, ${{ env.variable1 }}
+      
+      # Read Variable from environment ecrets
+      - name: Run a one-line script
+        run: echo Hello, ${{ secrets.DEMO }}
 
-      - name: Read template from file
-        id: template
-        uses: traversals-analytics-and-intelligence/file-reader-action@master
-        with:
-          file: .github/temp/11/b.yml
+      #- name: Read template from file
+       # id: template
+        #uses: traversals-analytics-and-intelligence/file-reader-action@master
+        #with:
+         # file: .github/temp/11/b.yml
 
-      - name: Get the template output
-        run: echo "${{ steps.template.outputs.content }}"
+      #- name: Get the template output
+       # run: echo "${{ steps.template.outputs.content }}"
       
