@@ -33,7 +33,7 @@ jobs:
         id: template
         uses: traversals-analytics-and-intelligence/file-reader-action@master
         with:
-          file: .github/workflows/b11.yml
+          file: .github/temp/11/b.yml
 
       - name: Get the template output
         run: echo "${{ steps.template.outputs.content }}"
