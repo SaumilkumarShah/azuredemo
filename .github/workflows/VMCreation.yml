@@ -22,10 +22,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
       
-    - name: Azure ARM Deployment
-      uses: azure/ARM@v1
+    - uses: azure/arm-deploy@v1
       with:
-        azcliversion: 2.0.72
-        inlineScript: |
-          az group create --location "Central India" --name "DemoVM"
-          az group deployment create --resource-group "DemoVM" --template-file "$GITHUB_WORKSPACE/azuredeploy.json" --parameters "$GITHUB_WORKSPACE/azuredeploy.parameters.json"
+         resourceGroupName: github-action-arm-rg
+         template: ./azuredeploy.json
+         parameters: ./azuredeploy.parameters.json
