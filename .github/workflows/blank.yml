@@ -29,11 +29,12 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, ${{ env.variable1 }}
 
-      - name: Read file contents
-        id: read_file
-        uses: andstor/file-reader-action@v1
+      - name: Read template from file
+        id: template
+        uses: traversals-analytics-and-intelligence/file-reader-action@master
         with:
-          path: ".github/workflows/b11.yml"
+          file: .github/workflows/b11.yml
 
-      - name: File contents
-        run: echo "${ steps.read_file.outputs.contents }"
+      - name: Get the template output
+        run: echo "${{ steps.template.outputs.content }}"
+      
