@@ -36,4 +36,4 @@ jobs:
           path: ".github/workflows/b11.yml"
 
       - name: File contents
-        run: echo "${ steps.read_file.outputs }"
+        run: echo "${ steps.read_file.outputs.contents }"
