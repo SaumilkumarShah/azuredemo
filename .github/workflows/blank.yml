@@ -29,11 +29,11 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, ${{ env.variable1 }}
 
-      - name: Read migrations
-        id: migrations
-        uses: komorebitech/read-files-action@v1.5
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
         with:
-          files: '[".github/workflows/b11.yml"]'
+          path: ".github/workflows/b11.yml"
 
-      - name: Echo migrations
-        run: echo "${{ steps.migrations }}"
+      - name: File contents
+        run: echo "${ steps.read_file.outputs.contents }"
