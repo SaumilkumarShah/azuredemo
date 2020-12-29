@@ -1,9 +1,14 @@
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Checkout
+      uses: actions/checkout@v1
+      
+    - uses: azure/arm-deploy@v1
+      with:
+         resourceGroupName: github-action-arm-rg
+         template: ./azuredeploy.json
+         parameters: ./azuredeploy.parameters.json
+         subscriptionId: b5ba36b7-2efd-4b2a-9789-9449399ab382
