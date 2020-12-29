@@ -27,3 +27,4 @@ jobs:
          resourceGroupName: github-action-arm-rg
          template: ./azuredeploy.json
          parameters: ./azuredeploy.parameters.json
+         subscriptionId: b5ba36b7-2efd-4b2a-9789-9449399ab382
