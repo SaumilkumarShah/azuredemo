@@ -31,7 +31,7 @@ jobs:
       
       # Read Variable from environment ecrets
       - name: Run a one-line script
-        run: echo Hello, ${{ secrets.DEMO }}
+        run: echo Hello, ${{ secrets.AZURE_CREDENTIALS }}
 
       #- name: Read template from file
        # id: template
