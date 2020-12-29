@@ -28,4 +28,4 @@ jobs:
         azcliversion: 2.0.72
         inlineScript: |
           az group create --location "Central India" --name "DemoVM"
-          az group deployment create --resource-group "DemoVM" --template-file "./azuredeploy.json" --parameters "azuredeploy.parameters.json"
+          az group deployment create --resource-group "DemoVM" --template-file "azuredeploy.json" --parameters "azuredeploy.parameters.json"
