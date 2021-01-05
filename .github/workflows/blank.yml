@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: array
 
 # Controls when the action will run. 
 on:
@@ -16,29 +16,23 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Set Variable
-        uses: deep-mm/set-variables@v1.0
+      - name: Create list from array of strings
+        uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
         with:
-            # Name of variable file
-            variableFileName: 'dev' #Dont write .json here
+          stringArray: '["file1","file2","file3"]'
+          
+      - uses: actions/checkout@v2
+        
+      - name: Get modified files
+        id: modified_files
+        uses: trilom/file-changes-action@v1.0.0
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create list of modified files
+        id: modified_files_list
+        uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
+        with:
+          stringArray: ${{ steps.modified_files.outputs.files_modified }}
+      - name: Print modified files
+        run: echo '${{ steps.modified_files_list.outputs.stringList }}'
 
-      # Read Variable from dev.json
-      - name: Run a one-line script
-        run: echo Hello, ${{ env.variable1 }}
-      
-      # Read Variable from environment ecrets
-      - name: Run a one-line script
-        run: echo Hello, ${{ secrets.AZURE_CREDENTIALS }}
-
-      #- name: Read template from file
-       # id: template
-        #uses: traversals-analytics-and-intelligence/file-reader-action@master
-        #with:
-         # file: .github/temp/11/b.yml
-
-      #- name: Get the template output
-       # run: echo "${{ steps.template.outputs.content }}"
-      
