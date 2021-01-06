@@ -20,12 +20,11 @@ jobs:
     
     - name: Azure CLI script
       uses: azure/CLI@v1
-      id: 'accountinfo'
+      id: accountinfo
       with:
         azcliversion: 2.0.72
         inlineScript: |
           az account show --subscription 'b5ba36b7-2efd-4b2a-9789-9449399ab382'
       
     - name: Print accountinfo
-      run: echo ${{ steps.accountinfo}}
-      
+      run: echo ${{ steps.accountinfo.outputs}}      
