@@ -27,4 +27,4 @@ jobs:
           az account show --subscription 'b5ba36b7-2efd-4b2a-9789-9449399ab382'
           
     - name: Print accountinfo
-      run: echo '${{ steps.accountinfo.outputs }}'
+      run: echo '${{ steps.accountinfo.outputs.id }}'
