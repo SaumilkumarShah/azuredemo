@@ -20,8 +20,12 @@ jobs:
     
     - name: Azure CLI script
       uses: azure/CLI@v1
+      id: 'accountinfo'
       with:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
           az storage -h
+          
+    - name: Print modified files
+      run: echo '${{ steps.accountinfo.outputs }}'
