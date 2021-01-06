@@ -24,4 +24,4 @@ jobs:
       with:
         # Specify the script here
         inlineScript: 
-          az account subscription list 
+          az config set extension.use_dynamic_install=yes_without_prompt;az account subscription list 
