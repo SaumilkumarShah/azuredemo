@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: VMCreation
+name: AzureRead
 
 # Controls when the action will run. 
 on:
@@ -17,3 +17,10 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Azure CLI Action
+      uses: Azure/cli@1.0.4
+      with:
+        # Specify the script here
+        inlineScript: 
+          az account subscription list 
