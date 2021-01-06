@@ -25,7 +25,6 @@ jobs:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
-          az storage -h
           
-    - name: Print modified files
+    - name: Print accountinfo
       run: echo '${{ steps.accountinfo.outputs }}'
