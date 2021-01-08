@@ -21,4 +21,6 @@ jobs:
       with:
         files: 'emp.json'
       env:
-        SECRET: ${{ secrets.EMPSECRET }}
+        username: SaumilkumarShah
+        password: ${{ secrets.EMPSECRET }}
+        url: https://github.com/${{github.repository}}
